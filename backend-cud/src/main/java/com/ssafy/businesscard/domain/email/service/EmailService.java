@@ -42,6 +42,7 @@ public class EmailService {
                 orElseThrow(() -> new UserException(UserErrorCode.NOT_EXISTS_CARD));
 
         try {
+
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper messageHelper = new MimeMessageHelper(message, true);
 

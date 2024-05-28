@@ -7,6 +7,8 @@ import com.ssafy.businesscard.domain.card.dto.request.MemoRequest;
 import com.ssafy.businesscard.domain.myalbum.dto.request.CardSharedRequest;
 import com.ssafy.businesscard.domain.myalbum.service.PrivateAlbumService;
 import com.ssafy.businesscard.global.utils.MessageUtils;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,12 +23,16 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/my-album")
 @CrossOrigin("*")
+//@Tag(name = "myalbum API", description = "myalbum API 입니다.")
+
 public class PrivateAlbumController {
 
     private final PrivateAlbumService privateAlbumService;
 
     // 명함 추가
     @PostMapping("/{userId}")
+//    @Tag(name = "regist API")
+//    @Operation(summary = "myalbum 등록", description = "myalbum 정보를 등록 합니다.")
     public ResponseEntity<?> regist(@PathVariable("userId") Long userId,
                                     @RequestBody CardRequest request) {
         privateAlbumService.regist(userId, request);
